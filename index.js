@@ -15,7 +15,7 @@ client.on('messageCreate', msg => {
 })
 
 
-// thedarkabyss v1.4 - the godliness update
+// thedarkabyss v1.4.1 - the godliness update
 
 const epoch = client.channels.cache.get('929283437704134666'); // #abyss-room // this does not work
 fs = require('fs') // random quote line picker
