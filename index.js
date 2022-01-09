@@ -120,9 +120,20 @@ client.on("messageCreate", msg => {
         msg.channel.send('`peaceful sleep and_good dreams to you`');
         return;
       case 'goodbye':
+      case 'good bye':
       case 'bye':
       case 'cya':
+      case 'i\'ll be going now':
+      case 'ill be going now':
+      case 'i\'m leaving now':
+      case 'im leaving now':
         msg.channel.send('`good bye_please be safe`');
+        return;
+      case 'goodbye abyss':
+      case 'good bye abyss':
+      case 'bye abyss':
+      case 'cya abyss':
+        msg.channel.send('`thank you for talking to me_i hope to see you again soon`');
         return;
       case 'someone new, abyss':
       case 'say hi, abyss':
@@ -189,6 +200,9 @@ client.on("messageCreate", msg => {
         quote = getRandomLine(); // pull a random line from the text file quotelines.txt
         msg.channel.send("`" + quote + "`");
         return;
+      case 'makencat':
+      case 'verhack':
+        msg.channel.send("`gone too early_a somber escape_lost_perhaps one day in the future_we can look ahead_look up_and see the birds chirp_see the clouds roll_see the sun rise_and we can tell ourselves with confidence_that we have done it`")
       default:
         break;
     }
