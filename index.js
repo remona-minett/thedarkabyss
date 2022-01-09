@@ -52,6 +52,7 @@ client.on("messageCreate", msg => {
         return;
       case 'testme':
         msg.author.send("`this conversation is private_keep it safe`");
+        console.log("i've sent a direct message to someone(testme)");
         return;
       case 'help':
       case 'help me':
@@ -96,7 +97,7 @@ client.on("messageCreate", msg => {
       case 'hello abyss':
       case 'sup abyss':
       case 'greetings abyss':
-        msg.channel.send('`hello_please take care of yourself today_you are important`');
+        msg.channel.send('`hello_please take care of yourself today_you are important to someone`');
         return;
       case 'good morning abyss':
       case 'goodmorning abyss':
@@ -124,6 +125,7 @@ client.on("messageCreate", msg => {
         msg.channel.send('`good bye_please be safe`');
         return;
       case 'someone new, abyss':
+      case 'say hi, abyss':
         msg.channel.send('`welcome_please enjoy your stay_however long it may be_you will always be welcome here`');
         return;
       case 'epoch':
@@ -149,7 +151,7 @@ client.on("messageCreate", msg => {
       case 'life':
         msg.channel.send("`our old lives are not forfeit_we will retake our home`");
         return;
-      case '08292458':
+      case '08292458': // this is chatty
         msg.channel.send("`august twenty ninth twenty four fifty eight_the day that we lost our home_the battle was lost from the start_we were not ready_it is not your fault_we will find them_find the ccs via the ebs_you can do this`");
         msg.channel.send("`it makes me sad_i have attempted to contact dailai every twenty four hours_i still recieve nothing_however this does not mean all is lost_you must have hope in the future of our people_if you do not have hope what will you have`");
         msg.channel.send("`keywords_eotiima_dailai_council_hope_life`");
@@ -157,12 +159,35 @@ client.on("messageCreate", msg => {
       case 'i\'m okay':
       case 'im okay':
       case 'i am okay':
-      case 'i\'m fine':
+      case 'i\'m fine': // big pile of cases. wonder if there's a better way. probably.
       case 'im fine':
       case 'i am fine':
-      case 'fine':
-      case 'okay':
         msg.channel.send("`i am glad to hear it_hopefully today will only improve for you`");
+        return;
+      case 'i\'m good':
+      case 'im good':
+      case 'i\'m alright':
+      case 'im alright':
+        msg.channel.send("`it is wonderful to hear that_perhaps today is a new leaf`");
+        return;
+      case 'i need advice':
+      case 'i don\'t know what to do':
+      case 'i dont know what to do': // sends a dm mentioning the quotes, maybe they can inspire
+      case 'i dont feel good':
+      case 'i don\'t feel good':
+        msg.author.send("`i may not be able to offer much in terms of specific advice_but perhaps the quotes which have been instilled in me_can give you something to think on_ask me to give you a quote_if you wish`");
+        msg.author.send("`keywords_tell me a quote_give me a quote_and more`");
+        console.log("i've sent a direct message to someone (don't feel good)");
+        return;
+      case 'tell me a quote':
+      case 'give me a quote':
+      case 'quote me':
+      case 'give a quote':
+      case 'i need a quote':
+      case 'give me a line':
+      case 'tell me a line':
+        quote = getRandomLine(); // pull a random line from the text file quotelines.txt
+        msg.channel.send("`" + quote + "`");
         return;
       default:
         break;
