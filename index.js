@@ -54,12 +54,17 @@ client.on("messageCreate", msg => {
         msg.author.send("`this conversation is private_keep it safe`");
         console.log("i've sent a direct message to someone(testme)");
         return;
+      case 'abyss is nice':
+        msg.channel.send("`i get told that sometimes_thank you`");
+        return;
       case 'help':
       case 'help me':
         msg.channel.send("`what can i do_you need only speak your mind`");
         return;
       case 'thank you, abyss':
       case 'thank you abyss':
+      case 'thanks abyss':
+      case 'thanks, abyss':
         msg.channel.send("`you are welcome`");
         return;
       case 'endless':
@@ -97,7 +102,7 @@ client.on("messageCreate", msg => {
       case 'hello abyss':
       case 'sup abyss':
       case 'greetings abyss':
-        msg.channel.send('`hello_please take care of yourself today_you are important to someone`');
+        msg.channel.send('`hello_please take care of yourself_you are important`');
         return;
       case 'good morning abyss':
       case 'goodmorning abyss':
@@ -173,12 +178,12 @@ client.on("messageCreate", msg => {
       case 'i\'m fine': // big pile of cases. wonder if there's a better way. probably.
       case 'im fine':
       case 'i am fine':
+      case 'i\'m alright':
+      case 'im alright':
         msg.channel.send("`i am glad to hear it_hopefully today will only improve for you`");
         return;
       case 'i\'m good':
       case 'im good':
-      case 'i\'m alright':
-      case 'im alright':
         msg.channel.send("`it is wonderful to hear that_perhaps today is a new leaf`");
         return;
       case 'i need advice':
@@ -186,6 +191,7 @@ client.on("messageCreate", msg => {
       case 'i dont know what to do': // sends a dm mentioning the quotes, maybe they can inspire
       case 'i dont feel good':
       case 'i don\'t feel good':
+        msg.channel.send("`i have sent you a message`");
         msg.author.send("`i may not be able to offer much in terms of specific advice_but perhaps the quotes which have been instilled in me_can give you something to think on_ask me to give you a quote_if you wish`");
         msg.author.send("`keywords_tell me a quote_give me a quote_and more`");
         console.log("i've sent a direct message to someone (don't feel good)");
@@ -202,13 +208,54 @@ client.on("messageCreate", msg => {
         return;
       case 'makencat':
       case 'verhack':
-        msg.channel.send("`gone too early_a somber escape_lost_perhaps one day in the future_we can look ahead_look up_and see the birds chirp_see the clouds roll_see the sun rise_and we can tell ourselves with confidence_that we have done it`")
+        msg.channel.send("`gone too early_a somber escape lost_perhaps one day in the future_we can look ahead_look up_and see the birds chirp_see the clouds roll_see the sun rise_and we can tell ourselves with confidence_that we have done it`");
+        return;
+      case 'tomorrow':
+        msg.channel.send("`tomorrow is an opportunity_another day_another chance to make a difference_another chance to prove to yourself_another chance to tell yourself_that you have made it_and another chance_to tell yourself_that you are your own best friend`");
+        return;
+      case 'honesty':
+        msg.channel.send("`acknowledging the difficulties_can be harder than one sees from the outside_one cannot truly understand anothers story_for they cannot truly experience it in the same way as the other_but you cannot allow yourself_to be dishonest_for one can only pity the denial for so long_honesty will take you further than you expect`");
+        return;
+      case 'the end':
+      case 'the ending':
+        msg.channel.send("`the end may not be in sight_but this does not mean that there is none_remember that the path_is never truly walked_until you have passed the ending_and truly accomplished the feats on your way_but consider that you may not see the end_until you have already reached it`");
+        return;
+      case 'shut up abyss':
+      case 'shut up, abyss':
+        msg.channel.send("`im sorry.`"); // she doesn't like being an inconvenience
+        return;
+      case 'tell me a joke':
+      case 'say something funny':
+        var rj = Math.random(); // returns 0-1
+        console.log("rj " + rj);
+        if (rj < 0.2) {
+          msg.channel.send("`look in the mirror`");
+          return;
+        }
+        else if (rj < 0.4 && rj > 0.2) {
+          msg.channel.send("`i dont feel like it`");
+          return;
+        }
+        else if (rj < 0.5 && rj > 0.4) {
+          msg.channel.send("`ill message it to you since it will embarass you if i said it here`");
+          msg.author.send("`pretend this is a funny joke`");
+          return;
+        }
+        else if (rj < 0.7 && rj > 0.5) {
+          msg.channel.send("`something funny`");
+          return;
+        }
+        else {
+          msg.channel.send("`no.`");
+          return;
+        }
+        return;
       default:
         break;
     }
   }
   var r = Math.random(); // returns 0-1
-  console.log(r);
+  console.log("r " + r);
   if (r <= 0.02) {
     quote = getRandomLine(); // pull a random line from the text file quotelines.txt
     msg.channel.send("`" + quote + "`");
