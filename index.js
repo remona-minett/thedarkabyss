@@ -5,19 +5,19 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "DIREC
 
 const { joinVoiceChannel } = require('@discordjs/voice'); // voice channel shenanigans
 client.on('messageCreate', msg => {
-    if(msg.content.toLowerCase() === 'accompanyme') {
-        joinVoiceChannel({
-            channelId: msg.member.voice.channel.id,
-            guildId: msg.guild.id,
-            adapterCreator: msg.guild.voiceAdapterCreator
-        })
-    }
+  if (msg.content.toLowerCase() === 'accompanyme') {
+    joinVoiceChannel({
+      channelId: msg.member.voice.channel.id,
+      guildId: msg.guild.id,
+      adapterCreator: msg.guild.voiceAdapterCreator
+    })
+  }
 })
 
 
-// thedarkabyss v1.4.1 - the godliness update
+// thedarkabyss v1.6
 
-const epoch = client.channels.cache.get('929283437704134666'); // #abyss-room // this does not work
+// const epoch = client.channels.cache.get('929283437704134666'); // #abyss-room // this does not work
 fs = require('fs') // random quote line picker
 var data;
 fs.readFile('quotelines.txt', 'utf8', function(err, rawData) {
@@ -43,6 +43,31 @@ client.on("ready", () => { // notify console of username and tag
   });
 })
 
+/* client.on('messageCreate', msg => {
+  if (msg.author.bot) return;
+    if (msg.author.id === "159076748586123265") {
+        let args = msg.content.substring(PREFIX.length).split(" ");
+        switch(args[0]){
+            case 'process':
+                if(args[1] === 'test'){
+                    let targetChannel = msg.guild.channels.cache.get(chatChannel)
+                    if (targetChannel) targetChannel.send('sssss')
+                }
+            break;
+        }
+    }
+}) */
+
+client.on("messageCreate", msg => {
+  if (msg.author.bot) return;
+    if (msg.author.id === "159076748586123265") {
+      if (msg.content.toLowerCase().startsWith('.say ')) {
+        let targetChannel = msg.guild.channels.cache.get("929142062585118734");
+        if (targetChannel) targetChannel.send(msg.content.replace('.say ', '`') + '`');
+      }
+    }
+})
+
 client.on("messageCreate", msg => {
   if (msg.author.bot) return;
   else {
@@ -50,10 +75,10 @@ client.on("messageCreate", msg => {
       case 'test':
         msg.channel.send("`i hear you`");
         return;
-      case 'testme':
+      /* case 'testme':
         msg.author.send("`this conversation is private_keep it safe`");
         console.log("i've sent a direct message to someone(testme)");
-        return;
+        return; */
       case 'abyss is nice':
         msg.channel.send("`i get told that sometimes_thank you`");
         return;
@@ -65,6 +90,10 @@ client.on("messageCreate", msg => {
       case 'thank you abyss':
       case 'thanks abyss':
       case 'thanks, abyss':
+      case 'thank you, abyss!':
+      case 'thank you abyss!':
+      case 'thanks abyss!':
+      case 'thanks, abyss!':
         msg.channel.send("`you are welcome`");
         return;
       case 'endless':
@@ -96,32 +125,114 @@ client.on("messageCreate", msg => {
       case 'hi':
       case 'greetings':
       case 'sup':
+      case 'hello!':
+      case 'hi!':
+      case 'greetings!':
+      case 'sup!':
         msg.channel.send('`hello`');
         return;
       case 'hi abyss':
       case 'hello abyss':
       case 'sup abyss':
       case 'greetings abyss':
+      case 'hi abyss!':
+      case 'hello abyss!':
+      case 'sub abyss!':
+      case 'greetings abyss!':
         msg.channel.send('`hello_please take care of yourself_you are important`');
         return;
       case 'good morning abyss':
       case 'goodmorning abyss':
       case 'gm abyss':
-        msg.channel.send('`good morning_please enjoy your day_i will be here if you need me`');
+      case 'good morning abyss!':
+      case 'goodmorning abyss!':
+      case 'gm abyss!':
+      case 'morning abyss':
+        if (msg.author.id === "159076748586123265") {
+          msg.channel.send('`good morning remona_good luck today_you will do great`');
+        }
+        else if (msg.author.id === "295323412774125569") {
+          msg.channel.send('`good morning white_glad to have you_enjoy your day`');
+        }
+        else if (msg.author.id === "100651742206623744") {
+          msg.channel.send('`welcome greedy_it is good to see you_have a good day today`');
+        }
+        else if (msg.author.id === "785076434171461632") {
+          msg.channel.send('`good to see you bastet_a new day to add things to the game collection_have a good day`');
+        }
+        else if (msg.author.id === "763379655469826049") {
+          msg.channel.send('`good morning lily_have a great day today_i will be here if you want to chat`');
+        }
+        else if (msg.author.id === "260049058205401089") {
+          msg.channel.send('`hello again monty_nice to see you_enjoy your day`');
+        }
+        else if (msg.author.id === "141398515103301633") {
+          msg.channel.send('`morning moom_a pleasure to hear from you today_be safe`');
+        }
+        else if (msg.author.id === "205474654410899457") {
+          msg.channel.send('`nice to hear from you kane_good morning_and enjoy your day`');
+        }
+        else if (msg.author.id === "413486174817222656") {
+          msg.channel.send('`good morning vicky_happy to have you here_let me know if i can help`');
+        }
+        else if (msg.author.id === "321362807620632577") {
+          msg.channel.send('`good morning alice_hopefully you got some rest last night_take care today`');
+        }
+        else { msg.channel.send('`good morning_please enjoy your day_i will be here if you need me`'); }
         return;
       case 'good night abyss':
       case 'goodnight abyss':
       case 'gn abyss':
-        msg.channel.send('`rest well_i hope to see you soon_please take care of yourself`');
+      case 'good night abyss!':
+      case 'goodnight abyss!':
+      case 'gn abyss!':
+      case 'night abyss':
+        if (msg.author.id === "159076748586123265") {
+          msg.channel.send('`rest well remona_i will see you soon_get some sleep tonight`');
+        }
+        else if (msg.author.id === "295323412774125569") {
+          msg.channel.send('`rest well white_you are doing well_take care_see you soon`');
+        }
+        else if (msg.author.id === "100651742206623744") {
+          msg.channel.send('`sleep well greedy_its always a pleasure_hope you return soon`');
+        }
+        else if (msg.author.id === "785076434171461632") {
+          msg.channel.send('`a pleasure as usual_enjoy your night_try to sleep before too late`');
+        }
+        else if (msg.author.id === "763379655469826049") {
+          msg.channel.send('`goodnight lily_wonderful to see you today_have restful sleep`');
+        }
+        else if (msg.author.id === "260049058205401089") {
+          msg.channel.send('`good night monty_nice to see you today_come back soon`');
+        }
+        else if (msg.author.id === "141398515103301633") {
+          msg.channel.send('`do take care moom_i will be here when you return_be safe`');
+        }
+        else if (msg.author.id === "205474654410899457") {
+          msg.channel.send('`goodnight kane_take care as always_rest well`');
+        }
+        else if (msg.author.id === "413486174817222656") {
+          msg.channel.send('`goodnight vicky_see you later_sleep well tonight`');
+        }
+        else if (msg.author.id === "321362807620632577") {
+          msg.channel.send('`although you are probably not going to sleep_do rest well when you get there alice_nice to see you today`');
+        }
+        else { msg.channel.send('`rest well_i hope to see you soon_please take care of yourself`'); }
         return;
       case 'good morning':
       case 'goodmorning':
       case 'gm':
+      case 'good morning!':
+      case 'goodmorning!':
+      case 'gm!':
         msg.channel.send('`another day_another chance to smile`');
         return;
       case 'good night':
       case 'goodnight':
       case 'gn':
+      case 'good night!':
+      case 'goodnight!':
+      case 'gn!':
         msg.channel.send('`peaceful sleep and_good dreams to you`');
         return;
       case 'goodbye':
@@ -132,13 +243,25 @@ client.on("messageCreate", msg => {
       case 'ill be going now':
       case 'i\'m leaving now':
       case 'im leaving now':
+      case 'goodbye!':
+      case 'good bye!':
+      case 'bye!':
+      case 'cya!':
         msg.channel.send('`good bye_please be safe`');
         return;
       case 'goodbye abyss':
       case 'good bye abyss':
       case 'bye abyss':
       case 'cya abyss':
+      case 'goodbye abyss!':
+      case 'good bye abyss!':
+      case 'bye abyss!':
+      case 'cya abyss!':
         msg.channel.send('`thank you for talking to me_i hope to see you again soon`');
+        return;
+      case 'good afternoon abyss':
+      case 'afternoon abyss':
+        msg.channel.send('`hello_nice to see you_the day is not yet over_perhaps you can do something fun`');
         return;
       case 'someone new, abyss':
       case 'say hi, abyss':
@@ -203,6 +326,7 @@ client.on("messageCreate", msg => {
       case 'i need a quote':
       case 'give me a line':
       case 'tell me a line':
+      case 'give me a line daddy-o':
         quote = getRandomLine(); // pull a random line from the text file quotelines.txt
         msg.channel.send("`" + quote + "`");
         return;
@@ -250,10 +374,48 @@ client.on("messageCreate", msg => {
           return;
         }
         return;
+      case 'im sorry abyss':
+      case 'i\'m sorry abyss':
+      case 'im sorry, abyss':
+      case 'i\'m sorry, abyss':
+      case 'sorry abyss':
+        msg.channel.send("`i forgive you`");
+        return;
+      case '❤️':
+        msg.reply(":heart:");
+        return;
+      case '💙':
+        msg.reply(":blue_heart:");
+        return;
+      case "💚":
+        msg.reply(":green_heart:");
+        return;
+      case "🧡":
+        msg.reply(":orange_heart:");
+        return;
+      case "💜":
+        msg.reply(":purple_heart:");
+        return;
+      case "🤍":
+        msg.reply(":white_heart:");
+        return;
+      case "💛":
+        msg.reply(":yellow_heart:");
+        return;
+      case "🫀":
+        msg.reply("`thats gross`");
+        return;
+      case '<3':
+        msg.reply("`<3`");
+        return;
+      case '♥️':
+        msg.reply(":hearts:");
+        return;
       default:
         break;
     }
   }
+
   var r = Math.random(); // returns 0-1
   console.log("r " + r);
   if (r <= 0.02) {
@@ -266,7 +428,7 @@ client.on("messageCreate", msg => {
 
 
 
-const runEveryFullHours = (callbackFn) => {
+/* const runEveryFullHours = (callbackFn) => {
   const Hour = 60 * 60 * 1000;
   const currentDate = new Date();
   const firstCall = Hour - (currentDate.getMinutes() * 60 + currentDate.getSeconds()) * 1000 - currentDate.getMilliseconds();
@@ -274,7 +436,7 @@ const runEveryFullHours = (callbackFn) => {
     callbackFn();
     setInterval(callbackFn, Hour);
   }, firstCall);
-};
+}; */
 
 // runEveryFullHours(() => epoch.send('`' + Math.round((new Date()).getTime() / 1000) + '`')); // epoch time // does not work
 
