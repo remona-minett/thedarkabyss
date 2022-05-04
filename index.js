@@ -446,10 +446,8 @@ try {
 }
 catch {
   client.on('debug', console.log)
-  console.log("critical - error detected, killing shard")
-    os.system("kill 1")
-  console.log("critical - killed shard, attempting restart")
-}
-finally {
+  console.log("critical - error detected, killing shard");
+    os.system("kill 1");
+  console.log("critical - killed shard, attempting restart");
   client.login(process.env.TOKEN)
 }
