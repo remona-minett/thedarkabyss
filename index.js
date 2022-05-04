@@ -15,7 +15,7 @@ client.on('messageCreate', msg => {
 })
 
 
-// thedarkabyss v1.6
+// thedarkabyss v1.6.1
 
 // const epoch = client.channels.cache.get('929283437704134666'); // #abyss-room // this does not work
 fs = require('fs') // random quote line picker
@@ -439,5 +439,17 @@ client.on("messageCreate", msg => {
 }; */
 
 // runEveryFullHours(() => epoch.send('`' + Math.round((new Date()).getTime() / 1000) + '`')); // epoch time // does not work
+//client.on('debug', console.log) // 'kill 1' in a shell to fix rate limiting (429)
 
-client.login(process.env.TOKEN)
+try {
+    client.login(process.env.TOKEN)
+}
+catch {
+  client.on('debug', console.log)
+  console.log("critical - error detected, killing shard")
+    os.system("kill 1")
+  console.log("critical - killed shard, attempting restart")
+}
+finally {
+  client.login(process.env.TOKEN)
+}
