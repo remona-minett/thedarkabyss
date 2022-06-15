@@ -15,7 +15,7 @@ client.on('messageCreate', msg => {
 })
 
 
-// thedarkabyss v1.6.1
+// thedarkabyss v1.6.2
 
 // const epoch = client.channels.cache.get('929283437704134666'); // #abyss-room // this does not work
 fs = require('fs') // random quote line picker
@@ -41,8 +41,10 @@ client.on("ready", () => { // notify console of username and tag
   client.user.setPresence({
     status: 'idle'
   });
+    client.users.fetch("159076748586123265", false).then((user) => {
+    user.send("`i am online`");
+});
 })
-
 /* client.on('messageCreate', msg => {
   if (msg.author.bot) return;
     if (msg.author.id === "159076748586123265") {
