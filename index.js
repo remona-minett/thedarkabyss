@@ -1,4 +1,4 @@
-const keepAlive = require("./server")
+// const keepAlive = require("./server")
 // keepAlive();
 const Discord = require("discord.js");
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES", "GUILD_VOICE_STATES"] })
@@ -15,7 +15,7 @@ client.on('messageCreate', msg => {
 })
 
 
-// thedarkabyss v1.6.2
+// thedarkabyss v1.7.0
 
 // const epoch = client.channels.cache.get('929283437704134666'); // #abyss-room // this does not work
 fs = require('fs') // random quote line picker
@@ -38,6 +38,7 @@ function getRandomLine() {
 client.on("ready", () => { // notify console of username and tag
   console.log(`Logged in as ${client.user.tag}.`);
   console.log('i am here. hello.');
+  console.log('abyss v1.7.0 loaded');
   client.user.setPresence({
     status: 'idle'
   });
