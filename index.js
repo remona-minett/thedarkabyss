@@ -38,7 +38,7 @@ function getRandomLine() {
 client.on("ready", () => { // notify console of username and tag
   console.log(`Logged in as ${client.user.tag}.`);
   console.log('i am here. hello.');
-  console.log('abyss v1.7.0 loaded');
+  console.log('abyss v1.7 loaded');
   client.user.setPresence({
     status: 'idle'
   });
